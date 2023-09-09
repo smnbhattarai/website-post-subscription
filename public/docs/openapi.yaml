@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: Subscriptions
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/posts:
+    post:
+      summary: ''
+      operationId: postApiPosts
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                website_id:
+                  type: integer
+                  description: ''
+                  example: 16
+                title:
+                  type: string
+                  description: 'Must not be greater than 180 characters.'
+                  example: yyderx
+                description:
+                  type: string
+                  description: ''
+                  example: 'Non qui vitae iure.'
+              required:
+                - website_id
+                - title
+                - description
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
