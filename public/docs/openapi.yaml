@@ -7,35 +7,20 @@ servers:
   -
     url: 'http://localhost:8000'
 paths:
-  /api/user:
-    get:
-      summary: ''
-      operationId: getApiUser
-      description: ''
-      parameters: []
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - Endpoints
-      security: []
   /api/posts:
     post:
-      summary: ''
-      operationId: postApiPosts
-      description: ''
+      summary: 'Create Post'
+      operationId: createPost
+      description: "Create website post\n\nThis will be used to send email to users who have subscribed to the website"
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"id\": 4,\n \"website_id\": 1,\n \"title\": \"abc\"\n \"description\": \"long description\"\n \"created_at\": \"timestamp\"\n \"updated_at\": \"timestamp\"\n}"
       tags:
         - Endpoints
       requestBody:
@@ -48,19 +33,54 @@ paths:
                 website_id:
                   type: integer
                   description: ''
-                  example: 16
+                  example: 10
                 title:
                   type: string
                   description: 'Must not be greater than 180 characters.'
-                  example: yyderx
+                  example: yvkdnifihllypuaqynlafxutd
                 description:
                   type: string
                   description: ''
-                  example: 'Non qui vitae iure.'
+                  example: 'Inventore aut ut doloribus facere nulla.'
               required:
                 - website_id
                 - title
                 - description
+      security: []
+  /api/subscriptions:
+    post:
+      summary: 'Create Subscription'
+      operationId: createSubscription
+      description: 'Add user to a website subscription list'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: boolean
+                example: true
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 2
+                website_id:
+                  type: integer
+                  description: ''
+                  example: 8
+              required:
+                - user_id
+                - website_id
       security: []
 tags:
   -

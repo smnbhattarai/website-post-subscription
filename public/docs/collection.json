@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Subscriptions",
-        "_postman_id": "fe89bdc1-8f28-4718-be52-7c445a74d6a7",
+        "_postman_id": "cb75ca37-2bf0-4826-b27f-0a8b3c5eda16",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -20,55 +20,7 @@
             "description": "",
             "item": [
                 {
-                    "name": "GET api\/user",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/user",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/user"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "POST api\/posts",
+                    "name": "Create Post",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -89,14 +41,59 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"website_id\":16,\"title\":\"yyderx\",\"description\":\"Non qui vitae iure.\"}"
+                            "raw": "{\"website_id\":10,\"title\":\"yvkdnifihllypuaqynlafxutd\",\"description\":\"Inventore aut ut doloribus facere nulla.\"}"
                         },
-                        "description": "",
+                        "description": "Create website post\n\nThis will be used to send email to users who have subscribed to the website",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"id\": 4,\n \"website_id\": 1,\n \"title\": \"abc\"\n \"description\": \"long description\"\n \"created_at\": \"timestamp\"\n \"updated_at\": \"timestamp\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Subscription",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/subscriptions",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/subscriptions"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":2,\"website_id\":8}"
+                        },
+                        "description": "Add user to a website subscription list",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "true",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         }
