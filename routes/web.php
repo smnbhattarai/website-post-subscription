@@ -1,5 +1,8 @@
 <?php
 
+use App\Mail\PostAdded;
+use App\Models\Post;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
 });
